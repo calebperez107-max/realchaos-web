@@ -1,17 +1,82 @@
-RealChaos Network body { margin: 0; font-family: Arial, sans-serif; background: #000; color: #fff; text-align: center; overflow-x: hidden; } canvas { position: fixed; top:0; left:0; z-index:-1; } header { padding: 30px; font-size: 2.8em; font-weight: bold; animation: glow 2s infinite alternate, fadeIn 2s ease; } @keyframes glow { from { text-shadow: 0 0 10px #4caf50; } to { text-shadow: 0 0 30px #4caf50; } } @keyframes fadeIn { from { opacity:0; transform:translateY(-20px);} to { opacity:1; transform:translateY(0);} } .container { padding: 20px; } .card { background: rgba(20,20,20,0.9); border-radius: 15px; padding: 20px; margin: 20px auto; max-width: 450px; box-shadow: 0 0 25px rgba(0,0,0,0.9); transition: 0.3s; animation: fadeIn 1.5s ease; } .card:hover { transform: scale(1.06); } button { padding: 12px 20px; border: none; border-radius: 10px; background: #4caf50; color: white; font-size: 16px; cursor: pointer; margin-top: 10px; transition: 0.3s; } button:hover { transform: scale(1.15); background:#45a049; } .rank { margin: 5px 0; } footer { margin-top: 40px; padding: 20px; background: #111; } #playersList { font-size: 0.9em; margin-top:10px; } 
-⚡ RealChaos Network ⚡ 
-🎮 Estado
-Cargando...
-🌐 IP
-realchaos.falix.gg
-Copiar IP 
-🏆 Rangos
-👑 Owner
-🛡️ Admin
-⚔️ Mod
-🌱 Player
-📋 Staff
-Postularme 
-💬 Discord
-Unirse 
-© 2026 RealChaos function copyIP(){navigator.clipboard.writeText("realchaos.falix.gg");alert("IP copiada");} function apply(){window.open("https://form.jotform.com/260743740665057","_blank");} function discord(){window.open("https://discord.gg/VE8Bh4XbM","_blank");} fetch("https://api.mcsrvstat.us/2/realchaos.falix.gg") .then(res=>res.json()) .then(data=>{ document.getElementById("status").innerText=data.online?"🟢 Online":"🔴 Offline"; if(data.online){ document.getElementById("players").innerText="Jugadores: "+data.players.online+"/"+data.players.max; document.getElementById("ping").innerText="Ping: "+data.debug.ping+"ms"; if(data.players.list){ document.getElementById("playersList").innerText="Online: "+data.players.list.join(", "); } } }); // partículas PRO const canvas=document.getElementById("bg"); const ctx=canvas.getContext("2d"); canvas.width=window.innerWidth; canvas.height=window.innerHeight; let particles=[]; for(let i=0;i<100;i++){ particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2,v:Math.random()*1}); } function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle="#4caf50"; particles.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); p.y+=p.v; if(p.y>canvas.height) p.y=0; }); requestAnimationFrame(draw); } draw();
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>RealChaos Network</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      padding: 30px;
+      font-size: 2em;
+      color: #4caf50;
+    }
+
+    .card {
+      background: #111;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+    }
+
+    button {
+      padding: 10px;
+      background: #4caf50;
+      border: none;
+      color: white;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>⚡ RealChaos Network ⚡</header>
+
+<div class="card">
+  <h2>🎮 Estado</h2>
+  <p id="status">Cargando...</p>
+  <p id="players"></p>
+</div>
+
+<div class="card">
+  <h2>🌐 IP</h2>
+  <p>realchaos.falix.gg</p>
+  <button onclick="copyIP()">Copiar IP</button>
+</div>
+
+<div class="card">
+  <h2>💬 Discord</h2>
+  <button onclick="discord()">Unirse</button>
+</div>
+
+<script>
+function copyIP(){
+  navigator.clipboard.writeText("realchaos.falix.gg");
+  alert("IP copiada");
+}
+
+function discord(){
+  window.open("https://discord.gg/VE8Bh4XbM");
+}
+
+fetch("https://api.mcsrvstat.us/2/realchaos.falix.gg")
+.then(res=>res.json())
+.then(data=>{
+ document.getElementById("status").innerText=data.online?"🟢 Online":"🔴 Offline";
+ if(data.online){
+  document.getElementById("players").innerText="Jugadores: "+data.players.online+"/"+data.players.max;
+ }
+});
+</script>
+
+</body>
+</html>
