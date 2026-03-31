@@ -1,16 +1,114 @@
-RealChaos Network body { margin:0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg,#0f0f0f,#000); color:white; text-align:center; } header{ padding:40px; font-size:2.5em; font-weight:bold; color:#4caf50; text-shadow:0 0 15px #4caf50; } .container{ display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; } .card{ background:rgba(20,20,20,0.9); border-radius:15px; padding:20px; width:300px; box-shadow:0 0 20px rgba(0,0,0,0.8); transition:0.3s; } .card:hover{ transform:translateY(-8px) scale(1.03); } button{ margin-top:10px; padding:10px 15px; border:none; border-radius:8px; background:#4caf50; color:white; cursor:pointer; transition:0.3s; } button:hover{ background:#45a049; transform:scale(1.1); } footer{ margin-top:40px; padding:15px; background:#111; } .status-online{color:#4caf50;} .status-offline{color:red;} ⚡ RealChaos Network ⚡ 
-🎮 Estado
-Cargando...
-🌐 IP
-realchaos.falix.gg
-Copiar IP 
-🏆 Rangos
-👑 Owner
-🛡️ Admin
-⚔️ Mod
-🌱 Player
-📋 Staff
-Postularme 
-💬 Discord
-Unirse 
-© 2026 RealChaos function copyIP(){ navigator.clipboard.writeText("realchaos.falix.gg"); alert("IP copiada"); } function apply(){ window.open("https://form.jotform.com/260743740665057","_blank"); } function discord(){ window.open("https://discord.gg/VE8Bh4XbM","_blank"); } fetch("https://api.mcsrvstat.us/2/realchaos.falix.gg") .then(res=>res.json()) .then(data=>{ if(data.online){ document.getElementById("status").innerHTML="🟢 Online"; document.getElementById("players").innerText="Jugadores: "+data.players.online+"/"+data.players.max; document.getElementById("ping").innerText="Ping: "+data.debug.ping+"ms"; } else { document.getElementById("status").innerHTML="🔴 Offline"; } });
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RealChaos Network</title>
+
+<style>
+body {
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#0f0f0f,#000);
+  color:white;
+  text-align:center;
+}
+
+header{
+  padding:40px;
+  font-size:2.5em;
+  font-weight:bold;
+  color:#4caf50;
+  text-shadow:0 0 15px #4caf50;
+}
+
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:rgba(20,20,20,0.9);
+  border-radius:15px;
+  padding:20px;
+  width:300px;
+  box-shadow:0 0 20px rgba(0,0,0,0.8);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.03);
+}
+
+button{
+  margin-top:10px;
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  background:#4caf50;
+  color:white;
+  cursor:pointer;
+}
+
+footer{
+  margin-top:40px;
+  padding:15px;
+  background:#111;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>⚡ RealChaos Network ⚡</header>
+
+<div class="container">
+
+<div class="card">
+<h2>🎮 Estado</h2>
+<p id="status">Cargando...</p>
+<p id="players"></p>
+<p id="ping"></p>
+</div>
+
+<div class="card">
+<h2>🌐 IP</h2>
+<p><b>realchaos.falix.gg</b></p>
+<button onclick="copyIP()">Copiar IP</button>
+</div>
+
+<div class="card">
+<h2>💬 Discord</h2>
+<button onclick="discord()">Unirse</button>
+</div>
+
+</div>
+
+<footer>© 2026 RealChaos</footer>
+
+<script>
+function copyIP(){
+ navigator.clipboard.writeText("realchaos.falix.gg");
+ alert("IP copiada");
+}
+
+function discord(){
+ window.open("https://discord.gg/VE8Bh4XbM");
+}
+
+fetch("https://api.mcsrvstat.us/2/realchaos.falix.gg")
+.then(res=>res.json())
+.then(data=>{
+ if(data.online){
+   document.getElementById("status").innerHTML="🟢 Online";
+   document.getElementById("players").innerText="Jugadores: "+data.players.online+"/"+data.players.max;
+ }
+});
+</script>
+
+</body>
+</html>
